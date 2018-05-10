@@ -2,7 +2,7 @@
  * @desc Import React
  */
 import React        from 'react';
-import {render}     from 'react-dom';
+import ReactDOM     from 'react-dom';
 
 /**
  * @desc Import Component's
@@ -12,13 +12,26 @@ import Routes from "./routes/routes";
 /**
  * @desc 
  */
-const App = () => {
-    return <Routes />
+class App extends React.Component{
+
+    /**
+     * @desc 
+     */
+    constructor(props){
+        super(props);
+    }
+
+    /**
+     * @desc 
+     */
+    render(){
+        return <Routes />;
+    }
+
 };
 
 
 /**
  * @desc 
  */
-render(  <App />
-         , document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

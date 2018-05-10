@@ -9,7 +9,8 @@ import WebpackLiveReload        from 'webpack-livereload-plugin';
 /**
  * @desc
  */
-const PATH_CLIENT = Path.join(__dirname,`/src/client`);
+const PATH_CLIENT   = Path.join(__dirname,`/src/client`);
+const PATH_DIST     = Path.join(__dirname,`dist`);
 
 /**
  * @desc 
@@ -21,13 +22,13 @@ export default {
     /**
      * @desc Entry file of develepment 
      */
-    entry : `${PATH_CLIENT}/assets/js/app.js`,
+    entry : Path.join(PATH_CLIENT,"/assets/js/app.js"),
 
     /**
      * @desc Output of react build in development to dist.
      */
     output: {
-        path            : Path.join(__dirname,"dist/assets/js"),
+        path            : Path.join(PATH_DIST,"/assets/js/"),
         filename        : 'bundle.js'
     },
 
@@ -62,6 +63,10 @@ export default {
                         options: {sourceMap : true}
                     }
                 ],
+            },
+            { /* @ Html */
+                test: /\.html$/,
+                loader: 'html-loader'
             }
         ]
 
@@ -73,9 +78,11 @@ export default {
      */
     plugins : [
         new WebpackHTMLPlugin({
-            template : `${PATH_CLIENT}/index.html`
+            template : Path.join(PATH_DIST,"index.html")
         }),
         new WebpackLiveReload()
-    ]
+    ],
+
+    watch: true
 
 };

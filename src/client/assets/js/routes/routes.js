@@ -12,17 +12,13 @@ import {
  * @desc All Components of Routes
  */
 import PlayerRoute from './playerRoute/playerRoute';
-import NotFound404 from '../components/notFound404Component/not-found-404';
+import NotFound404 from '../views/notFound404Component/not-found-404';
 
 
 /**
  * @desc 
  */
 class Routes extends React.Component{
-    constructor(props){
-        super(props);
-    }
-
     render(){
         return (<Router history={history}>
                     <Switch>
@@ -31,8 +27,6 @@ class Routes extends React.Component{
                     </Switch>
                 </Router>);
     }
-
-
 }
     
 export default Routes;

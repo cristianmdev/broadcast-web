@@ -1,8 +1,8 @@
 /**
  * @desc Configurations
  */
-import Config_Server    from './Config';
-import Config_Webpack   from '../webpack.config';
+import Config_Server    from './src/Config';
+import Config_Webpack   from './webpack.config';
 
 
 /**
@@ -13,19 +13,24 @@ import Express                  from 'express';
 import Path                     from 'path';
 import Webpack                  from 'webpack';
 import WebpackDevMiddleware     from 'webpack-dev-middleware';
+import HistoryFallBack          from 'connect-history-api-fallback';
 
 /**
- * 
+ * @desc
  */
 const App = Express();
 
+/**
+ * @desc
+ */
+App.use(HistoryFallBack());
 App.use(WebpackDevMiddleware(Webpack(Config_Webpack)));
 
 /**
  * @desc Static path's
 */
 const PUBLIC           =     {
-    '/assets' : '/dist/assets',
+    '/assets' : '/src/client/assets',
     '/dist'   : '/dist' 
 };
 
@@ -49,14 +54,15 @@ for(let pathPublic in PUBLIC){
 App.get('/*', (req,res) => {
 
     // 
-    let path = Path.join(__dirname,'client');
+    let path = Path.join(__dirname,'dist');
 
     /**
      * @desc Response
      */
-    Fs.readFile(`${path}/index.html`,function (err, data){
-        res.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
-        res.write(data);
+    Fs.readFile(`${path}/index.html`,(err, data) => {
+        res.statusCode = 200;
+        res.setHeader( 'content-type', 'text/html' );
+        res.send(data);
         res.end();
     });
 

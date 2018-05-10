@@ -5,7 +5,7 @@ import React,{Component} from 'react';
 import {render} from 'react-dom';
 import { Link } from 'react-router-dom';
 
-class NotFound404 extends Component{
+class notFound404Component extends Component{
 
     /* @ */
     constructor(props){
@@ -22,4 +22,4 @@ class NotFound404 extends Component{
 
 }
 
-export default NotFound404;
+export default notFound404Component;
