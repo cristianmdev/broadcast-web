@@ -3,6 +3,12 @@
  */
 import React        from 'react';
 import ReactDOM     from 'react-dom';
+import { Provider } from 'react-redux';
+
+/**
+ * @desc Store
+ */
+import Store from './store';
 
 /**
  * @desc Import Component's
@@ -25,7 +31,7 @@ class App extends React.Component{
      * @desc 
      */
     render(){
-        return <Routes />;
+        return  <Routes />;
     }
 
 };
@@ -34,4 +40,6 @@ class App extends React.Component{
 /**
  * @desc 
  */
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Provider store={Store}>
+                    <App />
+                </Provider>, document.getElementById('root'));

@@ -80,6 +80,7 @@ export default {
         new WebpackHTMLPlugin({
             template : Path.join(PATH_DIST,"index.html")
         }),
+        new Webpack.HotModuleReplacementPlugin(),
         new WebpackLiveReload()
     ],
 

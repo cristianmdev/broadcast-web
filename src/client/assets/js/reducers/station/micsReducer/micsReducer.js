@@ -13,11 +13,10 @@ class MicsReducer {
 
         switch(action){
             case 'LISTEN' :
-                this.listen().then(mics => {
+                Actions.listen().then(mics => {
                     prevState.Mics = mics;
                 })
             break;
-
         }
 
     }

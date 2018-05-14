@@ -1,0 +1,20 @@
+*{
+    margin:0;
+    padding:0;
+}
+#playerMicrophones{
+
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    width:20%;
+    background:#e6e8ea;
+    border:1px solid #c6c8ca;
+
+    div{
+        
+        flex-basis:33%;
+
+    } 
+
+}

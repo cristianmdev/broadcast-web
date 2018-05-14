@@ -6,7 +6,10 @@ import ReactDOM from 'react-dom';
 import UserFront from './userFront/user-front';
 
 /* @ */
-class OnLive extends Component{
+import './microphones.scss';
+
+/* @ */
+class Microphones extends Component{
 
     /**
       * @desc
@@ -48,6 +51,9 @@ class OnLive extends Component{
 
     }
 
+    /**
+     * @desc
+     */
     getRandomColor(){
         var chars = '0123456789ABCDEF'.split('');
         var hex = '#';
@@ -58,18 +64,32 @@ class OnLive extends Component{
      }
     
     /**
+     * 
+     * @param {*} deviceId 
+     * @return {Promise} - Stream of microphone.
+     */
+    getMicStream(deviceId){
+        return navigator.getUserMedia({
+            "audio"     : true,
+            "video"     : false,
+            "advanced"  : [
+                {"deviceId"  : deviceId},
+                {"volume"    : 1}
+            ]
+            });
+    }
+    
+     /**
     * @desc
     */
     render(){
         return (
-            (this.state.mics.length > 0 ? this.state.mics.map((val,key) => 
+            (this.state.mics.length > 0 ? this.state.mics.map((microphone,key) => 
 
-                (val.kind == 'audioinput' ? 
-                    <div key={key}>
-                        <h1>{(val.label != '' ? val.label : 'Mic N°'+key)}</h1>
+                (microphone.kind == 'audioinput' ? 
+                    <div id={"microphone"+key} key={key}>
                         {/*<knob />*/}
-                        <UserFront color={this.getRandomColor} />
-                        <button value="" />
+                        <UserFront color={this.getRandomColor} microphone={microphone} position={key} />
                     </div>
                     : '' 
                 )
@@ -81,4 +101,4 @@ class OnLive extends Component{
 
 }
 
-export default OnLive;
+export default Microphones;

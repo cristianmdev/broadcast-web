@@ -4,8 +4,11 @@
  */
 import {createStore} from 'redux';
 
+// @ 
+import Shared from './reducers/shared';
+
 // @ Reducer's of Station
-import Mics from './reducers/station/micsReducer';
+import Mics from './reducers/station/micsReducer/micsReducer';
 //import Playlist from 'reducers/station/playlist';
 //import Artists from 'reducers/station/artists';
 //import Albums from 'reducers/station/albums';
@@ -37,4 +40,4 @@ const Reducer = (prevState,action) => {
 
 
 
-export default createStore(Reducer);
+export default createStore(Reducer,Shared);

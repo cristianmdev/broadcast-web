@@ -14,6 +14,12 @@ import Path                     from 'path';
 import Webpack                  from 'webpack';
 import WebpackDevMiddleware     from 'webpack-dev-middleware';
 import HistoryFallBack          from 'connect-history-api-fallback';
+import WebpackHotMiddleware     from "webpack-hot-middleware";
+
+/**
+ * @desc
+ */
+var Compiler = Webpack(Config_Webpack);
 
 /**
  * @desc
@@ -25,6 +31,8 @@ const App = Express();
  */
 App.use(HistoryFallBack());
 App.use(WebpackDevMiddleware(Webpack(Config_Webpack)));
+App.use(WebpackHotMiddleware(Compiler));
+
 
 /**
  * @desc Static path's

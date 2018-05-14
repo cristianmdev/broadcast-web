@@ -2,14 +2,13 @@
  * @desc Import React
  */
 import React, {Component}       from 'react';
-
+import Store                    from '../../store';
 /*
 * @desc Import all Components of player
 */
-import OnLive       from './onLive/on-live';
-/*import Mics         from './Mics';
-import ListQueue    from './ListQueue';
-import Spectre      from './Spectre';
+import Microphones  from './microphones/microphones';
+import ListQueue    from './listQueue/list-queue';
+/*import Spectre      from './Spectre';
 import Artists      from './Artist';
 import Albums       from './Albums';
 import Songs        from './Songs';*/
@@ -29,9 +28,21 @@ class PlayerComponent extends Component{
             general     : {
                 "status"    : "",
             },
-            mics        : {}
+            Mics        : {}
         };
 
+    }
+
+    componentWillMount(){
+        
+        //
+        Store.subscribe(() => {
+            this.setState({
+                Mics: Store.getState().Mics
+            })
+        });
+                
+        
     }
 
     /* @ */
@@ -39,17 +50,14 @@ class PlayerComponent extends Component{
         
         /* @ */
         return (<main id="playerComponent">
-                <section>
-                    <OnLive />
-                </section>
-                {/*<section>
-                    <Mics />
+                <section id="playerMicrophones">
+                    <Microphones />
                 </section>
                 <section>
                     <ListQueue />
-                    <Spectre />
+                    {/*<Spectre />*/}
                 </section>
-                <section>
+                {/*<section>
                     <Artists />
                     <Albums />
                     <Songs />
