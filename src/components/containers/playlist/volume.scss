@@ -1,0 +1,62 @@
+[data-role="playlist-volume"] {
+
+    display: block;
+    background: #151515;
+    color: white;
+    width:100%;
+    padding: 1% 5%;
+    margin:0%; 
+    position: absolute;
+    bottom:0;
+    box-sizing: border-box;
+
+    nav{
+
+        display:flex;
+        justify-content: space-evenly;
+        padding:5% 1%;
+
+        button{
+            display:inline-block;
+            background:transparent;
+            color:white;
+            border:0px;
+            outline:0px;
+            font-size:1rem;
+        }
+
+    }
+
+    [data-role="widget-volume"]{
+
+        display:flex;
+        align-items: center;
+
+        h1 {
+            color: white;
+            font-size: 1.5rem;
+            text-align: center; 
+        }
+    
+        .rangeslider {
+            width:80% !important;
+            margin:5% auto !important;
+            height:3px !important;
+
+            .rangeslider__handle{
+                box-shadow:none !important;
+                background:transparent !important;
+                border-color:white !important;
+
+                &:after{
+                    background-color:white !important;
+                    box-shadow:none !important;
+                }
+            }
+
+        }
+
+    }
+
+}
+  

@@ -38,7 +38,7 @@ App.use(WebpackHotMiddleware(Compiler));
  * @desc Static path's
 */
 const PUBLIC           =     {
-    '/assets' : '/src/client/assets',
+    '/assets' : '/src/assets',
     '/dist'   : '/dist' 
 };
 

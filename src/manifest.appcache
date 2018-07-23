@@ -1,0 +1,10 @@
+CACHE MANIFEST
+#DATE 29-06-2018
+
+CACHE:
+index.html
+bundle.js
+favicon.ico
+
+NETWORK:
+*

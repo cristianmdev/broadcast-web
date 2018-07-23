@@ -9,8 +9,7 @@ import WebpackLiveReload        from 'webpack-livereload-plugin';
 /**
  * @desc
  */
-const PATH_CLIENT   = Path.join(__dirname,`/src/client`);
-const PATH_DIST     = Path.join(__dirname,`dist`);
+const PATH_DIST     = Path.join(__dirname,"dist");
 
 /**
  * @desc 
@@ -22,7 +21,7 @@ export default {
     /**
      * @desc Entry file of develepment 
      */
-    entry : Path.join(PATH_CLIENT,"/assets/js/app.js"),
+    entry : Path.join(__dirname+"/src","app.js"),
 
     /**
      * @desc Output of react build in development to dist.
@@ -39,7 +38,10 @@ export default {
 
         rules : [
             {/* @ ES6+ */
-                use             : 'babel-loader',
+                use             : {
+                    loader: 'babel-loader',
+                    options: {sourceMap : true}
+                },
                 test            : /\.js$/,
                 exclude         : /node_modules/
             },
@@ -48,20 +50,25 @@ export default {
                 test            : /\.css$/,
                 exclude         : /node_modules/
             },
+            /* @ Load Files */
+            {
+                loader: 'file-loader',
+                test: /\.(jpg|jpeg|png|gif|svg|woff|woff2|eot|ttf|otf)([\?]?.*)$/
+            },
             {/* @ Super Css */       
-                test            : /\.scss$/,
+                test            : /\.scss|.css$/,
                 use             : [
                     {
                         loader : 'style-loader'
                     },
                     {
                         loader : 'css-loader',
-                        options: {sourceMap : true}
+                        options: { sourceMap : true }
                     },
                     {
                         loader : 'sass-loader',
-                        options: {sourceMap : true}
-                    }
+                        options: { sourceMap : true }
+                    },
                 ],
             },
             { /* @ Html */
@@ -84,6 +91,15 @@ export default {
         new WebpackLiveReload()
     ],
 
+    /**
+     * @desc
+     */
+    devtool: 'cheap-module-eval-source-map',
+
+
+    /**
+     * @desc
+     */
     watch: true
 
 };

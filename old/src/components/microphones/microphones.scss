@@ -1,0 +1,43 @@
+*{
+    margin:0;
+    padding:0;
+}
+#playerMicrophones{
+
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width:20%;
+    background:#e6e8ea;
+    border:1px solid #c6c8ca;
+
+    div{
+        
+        flex-basis:100%;
+        min-height:132px;
+        border-radius:2px;
+        padding:2.5% 10%;
+        box-sizing: border-box;
+        position:relative;
+
+        figure{
+            background:#fff;
+            border:2px solid white;
+            border-radius:50%;
+            overflow: hidden;
+            padding:10%;
+            position: absolute;
+            top:25%;
+            left:-32px;
+        }
+        
+        h1{
+            color:white;
+        }
+
+        button{display:none;}
+
+    } 
+
+}

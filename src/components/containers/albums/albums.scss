@@ -1,0 +1,60 @@
+[data-role="albums"]{
+
+    display:block;
+    background:white;
+    width:100%;
+
+    [data-role="header"]{
+
+        display:block;
+        background:#151515;
+        color:white;
+        padding:1.5%;
+        position: relative;
+        font-weight:bold;
+
+        > i{
+            display:inline-block;
+            margin-right: 1%;
+        }
+
+        button{
+            display:block;
+            background:transparent;
+            color:white;
+            width:48px;
+            height:100%;
+            border:0px;
+            position: absolute;
+            top:0;
+            right:0;
+            cursor:pointer;
+        }
+
+    }
+
+    [data-role="search"]{
+        
+        display:block;
+        width: 100%;
+
+        input{
+            display:block;
+            background:#1f1f1f;
+            color:white;
+            width:100%;
+            padding:2%;
+            border:0px;
+        }
+
+    }
+
+    
+    output{
+        display:block;
+        padding:2%;
+        text-align: center;
+        font-weight:bold;
+    }
+
+}
